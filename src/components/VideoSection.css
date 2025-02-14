@@ -1,28 +1,23 @@
-/* Contenedor principal del video */
 .video-section {
-  position: fixed; /* Cubre todo el fondo */
-  top: 0;
-  left: 0;
-  width: 100vw; /* Asegura que el ancho sea exactamente el de la ventana */
-  height: 100vh; /* Cubre toda la altura de la ventana */
-  z-index: -1; /* Envía el video detrás del contenido */
-  overflow: hidden; /* Evita barras de desplazamiento */
-  pointer-events: none; 
+  position: relative;
+  width: 100vw;
+  height: 1000px; 
+  overflow: hidden;
+  pointer-events: none;
+  margin-top: 1000px; /* Adjust as needed to position below header */
+  z-index: 0; /* Ensure video is behind other elements */
 }
 
-/* Ajuste del video para que ocupe todo el espacio */
 .video-background {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  min-width: 100vw; /* Ajusta el ancho mínimo al viewport */
-  min-height: 100vh; /* Ajusta la altura mínima al viewport */
-  object-fit: cover; /* Asegura que el video cubra el área sin deformarse */
-  z-index: -1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1; /* Behind everything else */
 }
 
-/* Oscurece ligeramente el video para mejorar la legibilidad del contenido */
 .video-section::after {
   content: "";
   position: absolute;
@@ -30,33 +25,36 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.3); /* Ajusta la opacidad según sea necesario */
-  z-index: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 0; /* Slightly above video */
 }
 
-/* Contenido opcional centrado sobre el video */
 .video-content {
-  position: relative; /* Elementos sobre el video */
-  z-index: -1; /* Asegura que el contenido esté visible */
-  text-align: center;
-  color: white;
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100%; /* Centra verticalmente en toda la pantalla */
+  z-index: 1; /* Above video and overlay */
+  pointer-events: auto;
 }
 
-/* Logo centrado */
+.logo-buscador-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 2; /* Above video content */
+}
+
+.logo-buscador-container > * {
+  margin-bottom: 20px;
+}
+
 .logo-center {
   max-width: 400px;
   object-fit: contain;
-  margin: 0 auto 20px auto; /* Centrado con espacio inferior */
-}
-
-/* Logo más pequeño */
-.logo-centernena {
-  max-width: 100px;
-  object-fit: contain;
-  margin: 0 auto;
 }

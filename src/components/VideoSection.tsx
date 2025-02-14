@@ -1,24 +1,34 @@
-import React, { useEffect } from 'react';
-import './VideoSection.css'; 
+import React, { useEffect, useRef } from 'react';
+import './VideoSection.css';
+import SearchBar from './SearchBar'; 
 
-const VideoSection: React.FC = () => {
-  
+interface VideoSectionProps {
+  videoURL: string;
+  logoURL: string;
+}
+
+const VideoSection: React.FC<VideoSectionProps> = ({ videoURL, logoURL }) => {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
   useEffect(() => {
-    const videoElement = document.querySelector<HTMLVideoElement>('.video-background');
-    if (videoElement) {
-      videoElement.playbackRate = 1.5; // Ajusta la velocidad del video
+    if (videoRef.current) {
+      videoRef.current.playbackRate = 1.5;
     }
   }, []);
 
   return (
     <section id="bienvenidos" className="video-section">
-      <video autoPlay muted loop className="video-background">
-        <source src="/video-bienvenidos.mp4" type="video/mp4" />
+      <video ref={videoRef} autoPlay muted loop className="video-background">
+        <source src={videoURL} type="video/mp4" />
         Tu navegador no soporta la reproducción de video.
       </video>
       <div className="video-content">
-        <img src="logonena.png" alt="Logo de la empresa" className="logo-centernena" />
-        <img src="logo.png" alt="Logo de la empresa" className="logo-center" />
+        <div className="logo-buscador-container">
+          <SearchBar />
+          <img src={logoURL
+        
+          } alt="Logo de la empresa" className="logo-center" />
+        </div>
       </div>
     </section>
   );

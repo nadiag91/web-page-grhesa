@@ -1,13 +1,13 @@
 import React from 'react';
-import '../App.css';
 import Header from './Header';
-import AppRoutes from './AppRoutes';
+import Home from './Home';
+import './App.css';
 
 const App: React.FC = () => {
   return (
     <div className="App">
       <Header /> 
-      <AppRoutes />
+      <Home />
     </div>
   );
 };

@@ -1,0 +1,73 @@
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  background: #1a1a1a;
+}
+
+.search-container {
+  position: relative;
+}
+
+.search-input {
+  width: 300px;
+  padding: 10px 60px;
+  font-size: 16px;
+  color: white;
+  background: rgba(0, 0, 0, 0.4);
+  border: 2px solid #333;
+  border-radius: 30px;
+  outline: none;
+  transition: width 0.3s ease;
+}
+
+.search-input:focus {
+  width: 600px;
+}
+
+.search-input:focus ~ .light-effect::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border-radius: 30px;
+  clip-path: path('M 0 30 A 30 30 0 0 1 30 0 H 50 V 2 H 31 A 29 29 0 0 0 2 30 V 31 H 0 Z');
+}
+
+.final-border {
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border-radius: 30px;
+  border: 2px solid transparent;
+  pointer-events: none; /* Importante para que el input reciba los clicks */
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.search-input:focus ~ .final-border {
+  border-color: 344e41;
+  box-shadow: 0 0 10px rgba(255, 58, 58, 0.5);
+  opacity: 1;
+}
+
+.search-icon {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px; /* Ajusta el ancho de la imagen */
+  height: 20px; /* Ajusta el alto de la imagen */
+}
+
+
+.search-input.focused::placeholder { /* Estilo para "esconder" el placeholder */
+  color: transparent;
+}

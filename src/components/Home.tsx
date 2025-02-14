@@ -1,17 +1,16 @@
-import React, { Component } from 'react';
-import './Home.css';
+import React from 'react';
 import VideoSection from './VideoSection';
+import ProductSection from './ProductSection';
+import './Home.css';
 
-
-class Home extends Component {
-  render() {
-    return (
-      <div className="home">
-        <VideoSection />
-      </div>
-    );
-  }
-}
+const Home: React.FC = () => {
+  return (
+    <div className="HomePage">
+      <VideoSection videoURL="/video-bienvenidos.mp4" logoURL="/logo.png" />
+      <ProductSection />
+    </div>
+  );
+};
 
 export default Home;
 

@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import './DropdownSection.css';
 
 interface DropdownProps {
   title: string;
